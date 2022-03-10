@@ -17,15 +17,9 @@ public class GoogleDriveProxy implements IAccessDocument {
 
     @Override
     public String accessDocument(String url, String email) {
-        List<DriveDocument> foundDocumentList = googleDrive.findDocument(url);
-        DriveDocument foundDocument = foundDocumentList.get(0);
-        Boolean authorization = foundDocument.isUserAuthorized(email);
-        if(!foundDocumentList.isEmpty() && authorization) {
-            documentAccessRegister.add("documento con id "+foundDocument.getId()
-                    + " fue accedido por usuario con email " + email);
-            return "acceso autorizado";
-        }
-        return "acceso denegado";
+            documentAccessRegister.add("documento con id "+foundDocument.getId() + " fue accedido por usuario con email " + email);
+            googleDrive.accessDocument(url, email);
+
     }
 
     public void addDocument(DriveDocument document){
