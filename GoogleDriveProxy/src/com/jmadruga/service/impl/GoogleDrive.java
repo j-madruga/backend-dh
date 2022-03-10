@@ -1,7 +1,7 @@
 package com.jmadruga.service.impl;
 
+
 import com.jmadruga.models.DriveDocument;
-import com.jmadruga.models.User;
 import com.jmadruga.service.IAccessDocument;
 
 import java.util.ArrayList;
@@ -21,9 +21,8 @@ public class GoogleDrive implements IAccessDocument {
     @Override
     public String accessDocument(String url, String email) {
         List<DriveDocument> foundDocumentList = findDocument(url);
-        DriveDocument foundDocument = foundDocumentList.get(0);
-        Boolean authorization = foundDocument.isUserAuthorized(email);
-        if(!foundDocumentList.isEmpty() && authorization) {
+        Boolean isAuthorized = foundDocumentList.get(0).isUserAuthorized(email);
+        if(!foundDocumentList.isEmpty() && isAuthorized) {
             return "acceso autorizado";
         }
         return "acceso denegado";

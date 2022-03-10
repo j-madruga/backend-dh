@@ -1,5 +1,7 @@
 package com.jmadruga.models;
 
+import com.jmadruga.models.User;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
